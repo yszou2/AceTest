@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+
+<title>AceTest</title>
+
+<link href="static/css/reset.css" type="text/css" rel="stylesheet" media="all"/>
+<link href="static/css/widget.css" type="text/css" rel="stylesheet" media="all"/>
+<link href="static/css/main.css" type="text/css" rel="stylesheet" media="all"/>
+
+<script type="text/javascript" src="static/js/dojo.js"></script>
+<script type="text/javascript" src="static/js/dojo_tools.js"></script>
+<script type="text/javascript" src="static/js/widget.js"></script>
+<script type="text/javascript" src="static/js/const.js"></script>
+<script type="text/javascript" src="static/js/check.js"></script>
+<script type="text/javascript" src="static/js/export.js"></script>
+<script type="text/javascript" src="static/js/main.js"></script>
+<script type="text/javascript" src="static/js/case.js"></script>
+
+</head>
+<body>
+    <div class="preload">
+        <img src="static/img/check_off.gif" />
+        <img src="static/img/check_on.gif" />
+        <img src="static/img/fail.png" />
+        <img src="static/img/loading.gif" />
+        <img src="static/img/ok.png" />
+        <img src="static/img/play.png" />
+        <img src="static/img/select_off.gif" />
+        <img src="static/img/select_on.gif" />
+        <img src="static/img/drag.png" />
+        <img src="static/img/newtab.png" />
+    </div>
+
+    <div class="block">
+        <div class="head">
+            <div class="info">
+                <span class="logo"></span>
+                <span class="copyright"></span>
+            </div>
+            <div class="group">
+                <div id="category" class="aw_selectbox_block" style="display: none;">
+                    <div class="aw_selectbox aw_sb_off" name="project_control">未分类</div>
+                    <ul class="aw_selectbox_items aw_sb_items_on" name="for_project_control">
+                        <span id="category_split" style="padding: 2px 6px 2px 5px; cursor: default; height: 15px; line-height: 15px;">---------</span>
+                        <li id="category_manage">管理分类</li>
+                        <li id="category_new">新建分类</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="toolbox">
+            <div class="tb_line">
+                <div class="column"><span>公共头：<span><input style="width: 410px; font-size: 9px; font-weight: normal;" id="pub_header" /> <button style="padding-left: 10px; padding-right: 10px; vertical-align: middle;" id="pub_header_btn">更新</button></div>
+                <div class="column" style="float: right; margin-right: 0px;"><span style="margin-left: 10px;">主　机：<span><input style="width: 260px;" id="pub_host" /></div>
+            </div>
+
+            <div class="tb_line">
+                <div class="column">
+                    <div class="aw_selectbox_block" style="margin-top: 5px;">
+                        <div class="aw_selectbox aw_sb_off" name="project_control">操作</div>
+                        <ul class="aw_selectbox_items aw_sb_items_on" name="for_project_control" style="height: 19px;">
+                            <li id="delete_cases" style="color: red;">删除</li>
+                            <li id="export">导出接口文档</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="column"><span style="display: block; float: left;">过滤：</span><input style="width: 200px;" id="filter" value="" />
+                </div>
+
+                <div class="column" style="text-align: center;">
+                    <div class="column right_count" id="right_count">0</div>
+                    <div class="column fail_count" id="fail_count">0</div>
+                </div>
+
+                <div class="column" style="text-align: center;">
+                    <div id="var_pool">
+                        <span id="var_pool_txt">参数池</span>
+                        <span id="var_pool_num">0</span>
+                    </div>
+                </div>
+
+                <div class="column"><span style="display: block; float: left;">方式：</span>
+                    <div class="aw_selectbox_block" id="run_type" style="float: left; margin-top: 5px;">
+                        <div class="aw_selectbox aw_sb_off" name="project_control">顺序</div>
+                        <ul class="aw_selectbox_items aw_sb_items_on" name="for_project_control" style="height: 38px;">
+                            <li class="selected">顺序</li>
+                            <li>并发</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="column"><span style="display: block; float: left;">重复：</span><input style="width: 40px;" id="repeat" value="1" />
+                </div>
+
+                <div class="column" id="create" style="float: right; margin-right: 0px;">新建</div>
+            </div>
+        </div>
+
+        <div class="case_list" id="case_list">
+            <div class="case case_head">
+                <span class="c_cb"><img style="background-image: none;" class="drag" src="static/img/null.gif" /><img id="cb_control" class="aw_checkbox aw_cb_off" src="static/img/null.gif" /></span>
+                <span class="c_url">地　　址</span>
+                <span class="c_method">方法</span>
+                <span class="c_params">参　数</span>
+                <span class="c_header">头</span>
+                <span class="c_check">验　　证</span>
+                <span class="c_memo">备　　注</span>
+                <span class="c_run"><img class="status play" src="static/img/null.gif" id="multi_run" /><img class="newtab" src="static/img/null.gif" /></span>
+            </div>
+            <!--<div class="case">
+                <span class="c_cb"><img class="aw_checkbox aw_cb_off" src="static/img/null.gif" /></span>
+                <span class="c_url">地址</span>
+                <span class="c_method">GET</span>
+                <span class="c_params">参数</span>
+                <span class="c_header">头</span>
+                <span class="c_check">验证</span>
+                <span class="c_memo">备注</span>
+                <span class="c_run"><img class="status loading" src="static/img/null.gif" /></span>
+            </div>-->
+
+        </div>
+
+        <div id="new_case" class="new_case">
+            <h1>新的测试用例</h1>
+            <div class="new_case_block">
+                <div><span>地址：</span><input id="nc_url" /></div>
+                <div style="clear: both; height: 25px;"><span style="float: left;">方法：</span>
+                    <div class="aw_selectbox_block" id="nc_method" style="float: left; margin-top: 2px;">
+                        <div class="aw_selectbox aw_sb_off" name="nc_method">GET</div>
+                        <ul class="aw_selectbox_items aw_sb_items_on" name="for_nc_method" style="height: 76px;">
+                            <li class="selected">GET</li>
+                            <li>POST</li>
+                            <li>PUT</li>
+                            <li>DELETE</li>
+                        </ul>
+                    </div>
+                </div>
+                <div><span>参数：</span><textarea id="nc_params"></textarea></div>
+                <div><span>　头：</span><input id="nc_header" /></div>
+                <div><span>验证：</span><textarea id="nc_check"></textarea></div>
+                <div><span>备注：</span><input id="nc_memo" /></div>
+                <input type="hidden" id="nc_id" value="" />
+                <div style="margin-top: 20px; text-align: right;"><button id="new_case_btn">确定</button>　<button id="new_case_cancel">取消</button></div>
+            </div>
+        </div>
+
+        <div id="new_category" class="new_category">
+            <h1>新建分类</h1>
+            <div class="new_category_block">
+                <input type="hidden" id="category_id" value="" />
+                <div><span>名字：</span><input id="new_category_name" style="width: 180px;" /></div>
+                <div style="margin-top: 20px; text-align: right;"><button id="new_category_btn">确定</button>　<button id="new_category_cancel">取消</button></div>
+            </div>
+        </div>
+
+        <div id="edit_category" class="edit_category">
+            <h1>编辑分类<span id="edit_category_close">关闭</span></h1>
+            <div class="edit_category_list">
+                <!--<div class="category_item" name="2">
+                    <span class="ci_name">新建的</span>
+                    <span class="ci_edit">编辑</span>
+                    <span class="ci_up">上移</span>
+                    <span class="ci_down">下移</span>
+                </div>-->
+            </div>
+        </div>
+
+        <div id="edit_var_pool" class="edit_var_pool">
+            <h1>参数池<span id="edit_var_pool_close">关闭</span></h1>
+
+            <div class="var_list">
+                <!--<div class="var">
+                    <span class="var_name">abcdef</span>
+                    <input class="var_value" value="123" />
+                </div>-->
+            </div>
+
+            <div class="var_control">
+                <div class="var">
+                    <input id="var_name_control" style="width: 70px; margin: 0px 9px;"/>
+                    <input id="var_value_control"  style="width: 300px;"/>
+                </div>
+                <div class="var" style="text-align: center; margin-top: 5px;">
+                    <button id="var_control_btn">添加</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script type="text/javascript" charset="utf-8">
+dojo.addOnLoad(function(){
+});
+</script>
+</body>
+</html>

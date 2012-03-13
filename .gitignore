@@ -1,2 +1,5 @@
-.pyc
-.swp
+tornado
+*.pyc
+*.swp
+compress_js.py
+export.html

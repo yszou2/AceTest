@@ -1,0 +1,56 @@
+img.aw_checkbox{
+    width: 16px;
+    height: 16px;
+}
+img.aw_cb_on{
+    background: url(../img/check_on.gif) center center no-repeat;
+}
+img.aw_cb_off{
+    background: url(../img/check_off.gif) center center no-repeat;
+}
+
+div.aw_selectbox_block{
+    line-height: 17px;
+}
+div.aw_selectbox{
+    border: 1px solid #799fff;
+    font-size: 11px;
+    letter-spacing: 2px;
+    cursor: default;
+    color: #0E84B7;
+    display: inline;
+    padding: 1px 20px 1px 5px;
+}
+div.aw_sb_off{
+    background: white url(../img/select_off.gif) right center no-repeat;   
+}
+div.aw_sb_on{
+    background: white url(../img/select_on.gif) right center no-repeat;   
+}
+ul.aw_selectbox_items{
+    background-color: white;    
+    position: absolute;
+    font-size: 11px;
+    border: 1px solid #799fff;
+    color: #0E84B7;
+    padding-top: 5px;
+    overflow: hidden;
+}
+ul.aw_sb_items_on{
+    display: block;
+    /*border-top: none;*/
+}
+ul.aw_sb_items_off{
+    display: none;
+}
+ul.aw_selectbox_items li{
+    height: 15px;    
+    line-height: 15px;
+    padding: 2px 5px;
+    padding-right: 6px;
+    cursor: pointer;
+}
+ul.aw_selectbox_items li:hover{
+    color: white;
+    background-color: #118EC4;
+}

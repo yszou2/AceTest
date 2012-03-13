@@ -1,0 +1,53 @@
+AUTHOR: Yesheng Zou <yeshengzou@gmail.com>
+LICENSE: GPLv3
+COPYRIGHT: copyright (c) 2012 Yesheng Zou
+
+
+AceTest is a web application to process http request, check response and generate interface document.
+
+As a web application, Tornado is used as backends, and Dojo is used as frontend. And Django's ORM is used for accessing DB.
+
+INSTALL
+=======
+
+1. To install Tornado(ver 2.0), or just download the project and put the directory in AceTest's directory.
+2. Django(ver 1.2) should be installed.
+
+RUN
+===
+
+just as a Tornado project:
+
+$ python server.py
+
+REBUILD DB
+==========
+
+$ rm data.db
+$ python manage.py syncdb
+
+
+AceTest 是一个 Web 应用程序，用于控制 HTTP 请求，即，你可以在 AceTest 中很方便地定义 HTTP 请求，然后把它提交到你指定的 URL 。同时，你可以对请求的响应进行检查。以此达到测试的目的。
+
+另外， AceTest 可以根据定义好的 HTTP 请求，自动生成描述 HTTP 接口的文档。
+
+AceTest 的后端使用 Tornado ，前端的交互使用了 Dojo 。另外，此项目直接使用了 Django 的 ORM 部分进行对数据库的访问。
+
+安装
+====
+
+1. 安装 Tornado 2.0 ，或者直接下载 Tornado 的文件，放到 AceTest 项目的目录下。
+2. 机器上需要安装有 Django 1.2。
+
+运行
+====
+
+就像一个普通的 Tornado 项目一样：
+
+$ python server.py
+
+重建数据库
+==========
+
+$ rm data.db
+$ python manage.py syncdb
