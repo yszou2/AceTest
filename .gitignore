@@ -3,3 +3,4 @@ tornado
 *.swp
 compress_js.py
 export.html
+data.db
