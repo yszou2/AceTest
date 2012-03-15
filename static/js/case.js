@@ -203,7 +203,7 @@ var CaseBind = function(node){
         //转成标准的json
         if(v.header != ''){
             var obj = eval('(' + v.header + ')');
-            v.header = dojo.toJson(v.header);
+            v.header = dojo.toJson(obj);
         }
 
         //使用参数池中的参数

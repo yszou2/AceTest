@@ -349,13 +349,13 @@ class RunHandler(BaseHandler):
             if params:
                 p = {}
                 for k, v in params.items():
-                    p[k.encode('utf8')] = v.encode('utf8')
+                    p[k.encode('utf8')] = v.encode('utf8') if isinstance(v, unicode) else str(v)
                 url = url + '?' + urlencode(p)
             params = None
         else:
             for p in params:
-                if isinstance(params[p], unicode):
-                    params[p] = params[p].encode('utf8')
+                params[p] = params[p].encode('utf8') if isinstance(params[p], unicode) \
+                                                     else str(params[p])
 
         if isinstance(url, unicode):
             url = url.encode('utf8')
