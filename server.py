@@ -35,7 +35,7 @@ django_settings.configure(DATABASES = settings.DATABASES)
 from django.db import connection, transaction
 from Schema.models import Request, Category
 
-#tornado.httpclient.AsyncHTTPClient.configure("tornado.curl_httpclient.CurlAsyncHTTPClient")
+tornado.httpclient.AsyncHTTPClient.configure("tornado.curl_httpclient.CurlAsyncHTTPClient")
 AsyncClient = tornado.httpclient.AsyncHTTPClient
 Client = tornado.httpclient.HTTPClient
 
@@ -336,7 +336,8 @@ class RunHandler(BaseHandler):
             return self.finish({'result': 6, 'msg': 'wrong pub_header'})
 
         default_header = {
-            'User-Agent':  'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.18) Gecko/20110628 Ubuntu/10.04 (lucid) Firefox/3.6.18'
+            'User-Agent':  'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.18) Gecko/20110628 Ubuntu/10.04 (lucid) Firefox/3.6.18',
+            'Connection': 'close',
         }
 
         default_header.update(pub_header)
