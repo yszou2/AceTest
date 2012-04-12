@@ -35,7 +35,7 @@ django_settings.configure(DATABASES = settings.DATABASES)
 from django.db import connection, transaction
 from Schema.models import Request, Category
 
-tornado.httpclient.AsyncHTTPClient.configure("tornado.curl_httpclient.CurlAsyncHTTPClient")
+#tornado.httpclient.AsyncHTTPClient.configure("tornado.curl_httpclient.CurlAsyncHTTPClient")
 AsyncClient = tornado.httpclient.AsyncHTTPClient
 Client = tornado.httpclient.HTTPClient
 
