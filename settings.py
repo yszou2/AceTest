@@ -40,15 +40,15 @@ SECRET_KEY = '30z5-b%zz@1oqkw!11oi34z!#%v34$=6(ldq+k2fla_!!soelk'
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     #'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+    #'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    #'django.middleware.common.CommonMiddleware',
+    #'django.contrib.sessions.middleware.SessionMiddleware',
     #'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    #'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.messages.middleware.MessageMiddleware',
 )
 
@@ -61,12 +61,9 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    #'django.contrib.sites',
-    #'django.contrib.messages',
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
+    #'django.contrib.auth',
+    #'django.contrib.contenttypes',
+    #'django.contrib.sessions',
+    #'django.contrib.admin',
     'Schema',
 )
