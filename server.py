@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import json
 import imp
 import os
 from urllib import urlencode
 import time
 import uuid
 import datetime
-import json
 import traceback
 
 import tornado.escape
@@ -16,6 +14,8 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 import tornado.httpclient
+import tornado.template
+from tornado.web import _O
 
 from tornado.options import define, options
 
@@ -40,6 +40,11 @@ AsyncClient = tornado.httpclient.AsyncHTTPClient
 Client = tornado.httpclient.HTTPClient
 
 DEFAULT_HOST = 'http://localhost:8000'
+
+#打到模板中去的函数
+Funcs = _O({
+    'uuid': uuid.uuid4,
+})
 
 
 class BaseHandler(tornado.web.RequestHandler):
@@ -318,19 +323,22 @@ class RunHandler(BaseHandler):
                 url = DEFAULT_HOST + url
 
         try:
-            params = json.loads(self.get_argument('params', '{}').replace("'", '"').strip())
+            t = tornado.template.Template(self.get_argument('params', '{}')).generate(Funcs=Funcs)
+            params = tornado.escape.json_decode(t.replace("'", '"').strip())
         except:
             traceback.print_exc()
             return self.finish({'result': 4, 'msg': 'wrong params'})
 
         try:
-            header = json.loads(self.get_argument('header', '{}').replace("'", '"').strip())
+            t = tornado.template.Template(self.get_argument('header', '{}')).generate(Funcs=Funcs)
+            header = tornado.escape.json_decode(t.replace("'", '"').strip())
         except:
             traceback.print_exc()
             return self.finish({'result': 5, 'msg': 'wrong header'})
 
         try:
-            pub_header = json.loads(self.get_argument('pub_header', '{}').replace("'", '"').strip())
+            t = tornado.template.Template(self.get_argument('pub_header', '{}')).generate(Funcs=Funcs)
+            pub_header = tornado.escape.json_decode(t.replace("'", '"').strip())
         except:
             traceback.print_exc()
             return self.finish({'result': 6, 'msg': 'wrong pub_header'})
@@ -399,7 +407,7 @@ class RunHandler(BaseHandler):
                     body = unicode(response.body, 'iso-8859-1')
 
             try:
-                js = json.loads(body)
+                js = tornado.escape.json_decode(body)
             except:
                 js = None
         else:
