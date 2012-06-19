@@ -528,6 +528,7 @@ class Application(tornado.web.Application):
 def main():
     http_server = tornado.httpserver.HTTPServer(Application(), xheaders=True)
     http_server.listen(options.port)
+    print 'starting on %s ...' % options.port
     tornado.ioloop.IOLoop.instance().start()
 
 
