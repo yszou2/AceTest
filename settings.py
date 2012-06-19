@@ -19,7 +19,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': J(PROJECT_DIR, 'data.db'),                    
+        'NAME': J(PROJECT_DIR, 'AceTest.sqlite3'),                    
         'USER': '',                   
         'PASSWORD': '',              
         'HOST': '',                 
