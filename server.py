@@ -417,7 +417,7 @@ class RunHandler(BaseHandler):
 
         return self.finish({'result': 0 if not is_error else 1,
                             'response': {
-                                'headers': response.headers._as_list,
+                                'headers': response.headers._as_list if response.headers else {},
                                 'body': body,
                                 'json': js,
                                 'code': response.code,
