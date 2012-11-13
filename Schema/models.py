@@ -7,7 +7,7 @@ class Request(models.Model):
 
     id = models.CharField(u'ID', max_length=32, primary_key=True)
     url = models.CharField(u'访问地址', max_length=200)
-    method = models.CharField(u'方法', default='GET', max_length=4)
+    method = models.CharField(u'方法', default='GET', max_length=6)
     params = models.TextField(u'参数', default='', blank=True)
     header = models.TextField(u'头', default='', blank=True)
     memo = models.CharField(u'说明文字', max_length=200, default='', blank=True)
